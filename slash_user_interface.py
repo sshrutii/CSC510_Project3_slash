@@ -30,7 +30,7 @@ st.image("assets/slash.png")
 
 st.write("Slash is a command line tool that scrapes the most popular e-commerce websites to get the best deals on the searched items across multiple websites. If a certain item is not found on the selected website, it will automatically show results from other websites.")
 product = st.text_input('Enter the product item name')
-website = st.selectbox('Select the website',('Amazon', 'Walmart', 'Ebay', 'BestBuy', 'Target', 'Costco', 'All'))
+website = st.selectbox('Select the website',('Costco', 'Walmart', 'Ebay', 'BestBuy', 'Target', 'Amazon', 'All'))
 
 website_dict = {
         'Amazon':'az',
