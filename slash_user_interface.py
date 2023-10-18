@@ -28,7 +28,7 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 # Display Image
 st.image("assets/slash.png")
 
-st.write("Slash is a command line tool that scrapes the most popular e-commerce websites to get the best deals on the searched items across multiple websites")
+st.write("Slash is a command line tool that scrapes the most popular e-commerce websites to get the best deals on the searched items across multiple websites. If a certain item is not found on the selected website, it will automatically show results from other websites.")
 product = st.text_input('Enter the product item name')
 website = st.selectbox('Select the website',('Amazon', 'Walmart', 'Ebay', 'BestBuy', 'Target', 'Costco', 'All'))
 
@@ -44,18 +44,30 @@ website_dict = {
 # Pass product and website to method
 if st.button('Search') and product and website:
     results = search_items_API(website_dict[website], product)
+
+    # If result is not found on the selected website, search other websites
+    if results == None:
+        for key, value in website_dict.items():
+            if key == website:
+                continue
+            results = search_items_API(website_dict[key], product)
+            if results == None:
+                continue
+
+    
     # Use st.columns based on return values
     description = []
     url = []
     price = []
     site = []
     
-    for result in results:
-        if result!={} and result['price']!='':
-            description.append(result['title'])
-            url.append(result['link'])
-            price.append(float(''.join(result['price'].split('$')[-1].strip('$').rstrip('0').split(','))))
-            site.append(result['website'])
+    if results != None:
+        for result in results:
+            if result!={} and result['price']!='':
+                description.append(result['title'])
+                url.append(result['link'])
+                price.append(float(''.join(result['price'].split('$')[-1].strip('$').rstrip('0').split(','))))
+                site.append(result['website'])
             
     if len(price):
         
