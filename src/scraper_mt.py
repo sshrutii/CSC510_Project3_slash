@@ -169,7 +169,7 @@ def scrape(args, scrapers):
             t_az.join()
             i += 1
             for sort_by in args['sort']:
-                local = form.sortList(t_az.result, sort_by, args['des'])[:args.get('num', len(t_az.result))]
+                local = form.sortList(t_az.result, sort_by, args['des'])
             overall.extend(local)
             if i == len(scrapers):
                 break
@@ -177,7 +177,7 @@ def scrape(args, scrapers):
             t_bb.join()
             i += 1
             for sort_by in args['sort']:
-                local = form.sortList(t_bb.result, sort_by, args['des'])[:args.get('num', len(t_bb.result))]
+                local = form.sortList(t_bb.result, sort_by, args['des'])
             overall.extend(local)
             if i == len(scrapers):
                 break
@@ -185,7 +185,7 @@ def scrape(args, scrapers):
             t_cc.join()
             i += 1
             for sort_by in args['sort']:
-                local = form.sortList(t_cc.result, sort_by, args['des'])[:args.get('num', len(t_cc.result))]
+                local = form.sortList(t_cc.result, sort_by, args['des'])
             overall.extend(local)
             if i == len(scrapers):
                 break
@@ -193,7 +193,7 @@ def scrape(args, scrapers):
             t_eb.join()
             i += 1
             for sort_by in args['sort']:
-                local = form.sortList(t_eb.result, sort_by, args['des'])[:args.get('num', len(t_eb.result))]
+                local = form.sortList(t_eb.result, sort_by, args['des'])
             overall.extend(local)
             if i == len(scrapers):
                 break
@@ -201,7 +201,7 @@ def scrape(args, scrapers):
             t_tg.join()
             i += 1
             for sort_by in args['sort']:
-                local = form.sortList(t_tg.result, sort_by, args['des'])[:args.get('num', len(t_tg.result))]
+                local = form.sortList(t_tg.result, sort_by, args['des'])
             overall.extend(local)
             if i == len(scrapers):
                 break
@@ -209,7 +209,7 @@ def scrape(args, scrapers):
             t_wm.join()
             i += 1
             for sort_by in args['sort']:
-                local = form.sortList(t_wm.result, sort_by, args['des'])[:args.get('num', len(t_wm.result))]
+                local = form.sortList(t_wm.result, sort_by, args['des'])
             overall.extend(local)
             if i == len(scrapers):
                 break
