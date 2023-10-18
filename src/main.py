@@ -12,12 +12,15 @@ from typing import List
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import csv
 import nest_asyncio
 
 # local imports
 import src.scraper_mt as scr
+
+
 
 
 nest_asyncio.apply()
@@ -32,6 +35,14 @@ class jsonScraps(BaseModel):
 
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust to allow specific origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
+)
 
 
 @app.get("/")
