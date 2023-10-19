@@ -8,10 +8,19 @@ async function fetchData() {
   resultsDiv.innerHTML = '';
 
   data.forEach(item => {
-    // Remove spaces and add a dot to the price
-    const formattedPrice = item.price.replace(/\s/g, '').replace('$', '$ ');
+    // Replace spaces in the price with a dot
+    let formattedPrice = item.price.replace(/\s+/g, '.');
+
     const itemDiv = document.createElement('div');
-    itemDiv.innerHTML = `<h3>${item.title}</h3><p>Price: ${formattedPrice}</p><a href="${item.link}" target="_blank">Link</a>`;
+    
+    if(website=="wm"){
+      formattedPrice=formattedPrice.replace("Now.$.", "$");
+      itemDiv.innerHTML = `<h3>${item.title}</h3><p>Price: ${formattedPrice}</p><a href="${item.link}" target="_blank">Link</a>`;
+    }
+    else{
+      itemDiv.innerHTML = `<h3>${item.title}</h3><p>Price: ${formattedPrice}</p><a href="${item.link}" target="_blank">Link</a>`;
+    }
+
     resultsDiv.appendChild(itemDiv);
   });
 }
