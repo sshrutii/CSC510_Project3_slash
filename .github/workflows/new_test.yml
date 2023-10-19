@@ -1,4 +1,4 @@
-name: Run Tests on Push
+name: Run Python Tests on Push
 
 on:
   push:
@@ -16,10 +16,10 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: 3.8  # Adjust the Python version as needed
 
     - name: Install dependencies
       run: pip install -r requirements.txt
 
     - name: Run tests
-      run: pytest
+      run: pytest tests/
