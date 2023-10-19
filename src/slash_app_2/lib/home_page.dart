@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:slash_app_2/result_page.dart';
+import 'package:slash/result_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

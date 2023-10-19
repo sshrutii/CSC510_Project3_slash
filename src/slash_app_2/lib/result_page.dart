@@ -35,31 +35,16 @@ class _ResultPageState extends State<ResultPage> {
         .map((element) => element.innerHtml.trim())
         .toList();
 
-    print('Count: ${titles.length}');
-    for (final title in titles) {
-      debugPrint(title);
-    }
-
     final prices = html
         .querySelectorAll('span.f2')
         .map((element) => element.innerHtml.trim())
         .toList();
-
-    print('Count: ${prices.length}');
-    for (final price in prices) {
-      debugPrint(price);
-    }
 
     final urls = html
         .querySelectorAll('a[href^="/ip/"]')
         .map((element) =>
             'https://www.walmart.com/${element.attributes['href']}')
         .toList();
-
-    print('Count: ${urls.length}');
-    for (final url in urls) {
-      debugPrint(url);
-    }
 
     final urlImages = html
         .querySelectorAll('.mb0 img')
@@ -72,6 +57,18 @@ class _ResultPageState extends State<ResultPage> {
         .map((value) => value!)
         .toList();
 
+    print('Count: ${titles.length}');
+    for (final title in titles) {
+      debugPrint(title);
+    }
+    print('Count: ${prices.length}');
+    for (final price in prices) {
+      debugPrint(price);
+    }
+    print('Count: ${urls.length}');
+    for (final url in urls) {
+      debugPrint(url);
+    }
     print('Count: ${urlImages.length}');
     for (final urlImage in urlImages) {
       debugPrint(urlImage);
