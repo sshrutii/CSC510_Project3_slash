@@ -1,27 +1,25 @@
-name: Run Tests On Push
+name: Run Python Tests on Push
+
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Python 3.7.12
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.7.12
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          echo requirements installed
-      - name: Run tests
-        run: |
-          cd tests
-          pip install pytest
-          pytest
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8  # Adjust the Python version as needed
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run tests
+      run: pytest tests/
