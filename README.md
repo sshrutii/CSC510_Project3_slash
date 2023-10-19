@@ -15,7 +15,7 @@
 <a href="https://github.com/rohan22shah/slash-phase3/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/rohan22shah/slash-phase3"></a>
 <a href="https://github.com/rohan22shah/slash-phase3/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rohan22shah/slash-phase3"></a>
 <a href="https://github.com/abhi934/CSC510_Project2_slash-phase3/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/rohan22shah/slash-phase3"></a>
-<img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/rohan22shah/slash-phase3">
+<img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/abhi934/CSC510_Project2_slash-phase3">
 <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/abhi934/CSC510_Project2_slash-phase3">
 
 
