@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/rohan22shah/slash-phase3/branch/main/graph/badge.svg?token=ZJ1AXQ5IFN)](https://codecov.io/gh/rohan22shah/slash-phase3)
 [![Build Status](https://app.travis-ci.com/rohan22shah/slash-phase3.svg?branch=main)](https://app.travis-ci.com/rohan22shah/slash-phase3)
 [![Python Style Checker](https://github.com/rohan22shah/slash-phase3/actions/workflows/style_checker.yml/badge.svg)](https://github.com/rohan22shah/slash-phase3/actions/workflows/style_checker.yml)
-[![Run Tests On Push](https://github.com/rohan22shah/slash-phase3/actions/workflows/unit_test.yml/badge.svg)](https://github.com/rohan22shah/slash-phase3/actions/workflows/unit_test.yml)
+[![Run Tests On Push](https://github.com/abhi934/CSC510_Project2_slash-phase3/actions/workflows/unit_test.yml/badge.svg)](https://github.com/abhi934/CSC510_Project2_slash-phase3/actions/workflows/unit_test.yml)
 [![Python Application](https://github.com/rohan22shah/slash-phase3/actions/workflows/python-app.yml/badge.svg)](https://github.com/rohan22shah/slash-phase3/actions/workflows/python-app.yml)
 [![Lint Python](https://github.com/rohan22shah/slash-phase3/actions/workflows/main.yml/badge.svg)](https://github.com/rohan22shah/slash-phase3/actions/workflows/main.yml)
 [![Running Code Coverage](https://github.com/rohan22shah/slash-phase3/actions/workflows/code_cov.yml/badge.svg)](https://github.com/rohan22shah/slash-phase3/actions/workflows/code_cov.yml)
