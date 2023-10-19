@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PyScript Demo 1</title>
+    <title>Slash - Product Search</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <py-config>
-      [[runtimes]]
-      src = "runtime/pyodide.js"
-      name = "pyodide-0.21.3"
-      lang = "python"
-    </py-config>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="icons/png" href="/icon-128.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" integrity="sha384-oSMK3f2V5l0Omd5s4HPw15nVRRZnOnh5R59EdtG4oFY4m6pAZFOj0jwqXEqWHelN" crossorigin="anonymous">
     <link rel="stylesheet" href="popup.css" />
-    <link rel="stylesheet" href="runtime/pyscript.css" />
-    <script defer src="runtime/pyscript.js"></script>
     <script defer src="popup.js"></script>
   </head>
   <body>
-    <h2>Slash</h2>
-    <h4 id="datetime"></h4>
-    <label for="website">Website:</label>
-    <input type="text" id="website" placeholder="Enter website" /><br />
-    <label for="product">Product:</label>
-    <input type="text" id="product" placeholder="Enter product" /><br />
-    <button id="fetchButton">Fetch Data</button>
-
-    <div id="results"></div>
+    <div class="container mt-4">
+      <h2 class="text-center mb-4">Slash - Product Search</h2>
+      <div class="row mb-3">
+        <div class="col-md-6" style="padding-bottom: 15px;">
+          <label for="website" class="form-label">Select Website:</label>
+          <select id="website" class="form-select">
+            <option value="wm">Walmart</option>
+            <option value="az">Amazon</option>
+            <option value="tg">Target</option>
+            <option value="cc">Costco</option>
+            <option value="bb">Best Buy</option>
+            <option value="eb">eBay</option>
+          </select>
+        </div>
+        </div>
+        <div class="col-md-6" style="padding-bottom: 15px;">
+          <label for="product" class="form-label">Product Name:</label>
+          <input type="text" id="product" class="form-control" placeholder="Enter product" />
+        </div>
+      </div>
+      <div class="text-center mb-4">
+        <button id="fetchButton" class="btn btn-primary">Fetch Products</button>
+      </div>
+      <div id="results"></div>
+    </div>
   </body>
 </html>
