@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import 'package:url_launcher/url_launcher.dart';
+import "dart:math";
 
 class ResultPage extends StatefulWidget {
   final String selectedValue;
@@ -30,32 +31,68 @@ class _ResultPageState extends State<ResultPage> {
 
     dom.Document html = dom.Document.html(response.body);
 
-    final titles = html
-        .querySelectorAll('div > div > a > span')
-        .map((element) => element.innerHtml.trim())
-        .toList();
+    var titles = [];
+    var prices;
+    var urls;
+    var urlImages;
 
-    final prices = html
-        .querySelectorAll('span.f2')
-        .map((element) => element.innerHtml.trim())
-        .toList();
+    switch (widget.selectedValue) {
+      case 'costco':
+        titles = html
+            .querySelectorAll('span > a')
+            .map((element) => element.innerHtml.trim())
+            .toList();
 
-    final urls = html
-        .querySelectorAll('a[href^="/ip/"]')
-        .map((element) =>
-            'https://www.walmart.com/${element.attributes['href']}')
-        .toList();
+        prices = html
+            .querySelectorAll('div.price')
+            .map((element) => element.innerHtml.trim().substring(1))
+            .toList();
 
-    final urlImages = html
-        .querySelectorAll('.mb0 img')
-        .map((element) {
-          if ('${element.attributes['src']}'.startsWith('h')) {
-            return '${element.attributes['src']}';
-          }
-        })
-        .where((value) => value != null)
-        .map((value) => value!)
-        .toList();
+        urls = html
+            .querySelectorAll('span > a')
+            .map((element) => '${element.attributes['href']}')
+            .toList();
+
+        urlImages = html
+            .querySelectorAll('img[automation-id^="productImageLink_"]')
+            .map((element) {
+              if ('${element.attributes['src']}'.startsWith('h')) {
+                return '${element.attributes['src']}';
+              }
+            })
+            .where((value) => value != null)
+            .map((value) => value!)
+            .toList();
+      case 'ebay':
+      case 'walmart':
+        titles = html
+            .querySelectorAll('div > div > a > span')
+            .map((element) => element.innerHtml.trim())
+            .toList();
+
+        prices = html
+            .querySelectorAll('span.f2')
+            .map((element) => element.innerHtml.trim())
+            .toList();
+
+        urls = html
+            .querySelectorAll('a[href^="/ip/"]')
+            .map((element) =>
+                'https://www.walmart.com/${element.attributes['href']}')
+            .toList();
+
+        urlImages = html
+            .querySelectorAll('.mb0 img')
+            .map((element) {
+              if ('${element.attributes['src']}'.startsWith('h')) {
+                return '${element.attributes['src']}';
+              }
+            })
+            .where((value) => value != null)
+            .map((value) => value!)
+            .toList();
+      default:
+    }
 
     print('Count: ${titles.length}');
     for (final title in titles) {
@@ -74,9 +111,17 @@ class _ResultPageState extends State<ResultPage> {
       debugPrint(urlImage);
     }
 
+    List<int> lengths = [
+      titles.length,
+      prices.length,
+      urls.length,
+      urlImages.length
+    ];
+    int smallestLength = lengths.reduce(min);
+
     setState(() {
       searchResults = List.generate(
-        urls.length,
+        smallestLength,
         (index) => SearchResult(
           title: titles[index],
           price: prices[index],
@@ -123,8 +168,8 @@ class _ResultPageState extends State<ResultPage> {
 
   String getSearchUrl(String selectedValue, String searchText) {
     switch (selectedValue) {
-      case 'amazon':
-        return 'https://www.amazon.com/s?k=$searchText';
+      case 'costco':
+        return 'https://www.costco.com/CatalogSearch?dept=All&keyword=$searchText';
       case 'ebay':
         return 'https://www.ebay.com/sch/i.html?_nkw=$searchText';
       case 'walmart':
