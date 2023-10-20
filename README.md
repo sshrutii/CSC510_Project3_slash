@@ -134,11 +134,10 @@ Steps to install Chrome Extension:
 ---
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/anshulp2912"><img src="https://avatars.githubusercontent.com/u/36321866?s=400&u=829f7dc91108ae56805b2a2917b6ec63a1a0d9d0&v=4" width="75px;" alt=""/><br /><sub><b>Anshul Navinbhai Patel</b></sub></a></td>
-    <td align="center"><a href="https://github.com/AgrawalBhavya"><img src="https://avatars.githubusercontent.com/u/52067226?v=4" width="75px;" alt=""/><br /><sub><b>Bhavya Agrawal</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/darshanp228"><img src="https://avatars.githubusercontent.com/u/72122805?v=4" width="75px;" alt=""/><br /><sub><b>Darshan Manharbhai Patel</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/pragna98"><img src="https://avatars.githubusercontent.com/u/46415182?v=4" width="75px;" alt=""/><br /><sub><b>Pragna Bollam</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/rohan22shah"><img src="https://avatars.githubusercontent.com/u/42119767?v=4" width="75px;" alt=""/><br /><sub><b>Rohan Jigarbhai Shah</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/abhi934"><img src="https://avatars.githubusercontent.com/u/36321866?s=400&u=829f7dc91108ae56805b2a2917b6ec63a1a0d9d0&v=4" width="75px;" alt=""/><br /><sub><b>Abhishek Desai</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Chinzzii"><img src="https://avatars.githubusercontent.com/u/52067226?v=4" width="75px;" alt=""/><br /><sub><b>Chinmay Singhania</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Praful-Joshi"><img src="https://avatars.githubusercontent.com/u/72122805?v=4" width="75px;" alt=""/><br /><sub><b>Praful Joshi</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Rishi2812"><img src="https://avatars.githubusercontent.com/u/46415182?v=4" width="75px;" alt=""/><br /><sub><b>Rishi Dange</b></sub></a><br /></td>
   </tr>
 </table>
 
