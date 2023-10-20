@@ -124,11 +124,11 @@ Steps to install Chrome Extension:
 
 :golf: Future Roadmap
 ---
-- Improvement of Android User Interface
-- Sorting of results based on price, website
-- Front End implementation of Slash API , ie., converting it into a full stack web application.
-- Chrome Extension using the functionalities of Slash API
-- An iOS application.
+- Improvement of User Interface
+- Product comparison based on prices and product features
+- Chat channel
+- Adding more company websites
+- History of products searched
 
 :sparkles: Contributors
 ---
@@ -150,10 +150,12 @@ We would also like to extend our gratitude to previous group : https://github.co
 
 :email: Support
 ---
-For any queries and help, please reach out to us at: rohan22shah@gmail.com
+For any queries and help, please reach out to us at: abhishek.triotech@gmail.com
 
 
 ## Grading rubrics
+---
+Column 2 sum: 84
 ---
 | Parameters                                                                                                                                                                                                                                                                                                                                                                                                         | Score(self-assessment) | Evidence(links)                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
