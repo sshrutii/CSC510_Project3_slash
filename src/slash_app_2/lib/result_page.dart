@@ -64,6 +64,36 @@ class _ResultPageState extends State<ResultPage> {
             .map((value) => value!)
             .toList();
       case 'ebay':
+        titles = html
+            .querySelectorAll('span[role="heading"]')
+            .map((element) => element.innerHtml
+                .trim()
+                .replaceAll(RegExp(r'<!--F#f_0-->|<!--F/-->'), ''))
+            .toList();
+
+        prices = html
+            .querySelectorAll('span.s-item__price > span.BOLD')
+            .map((element) => element.innerHtml
+                .trim()
+                .replaceAll(RegExp(r'<!--F#f_0-->|<!--F/-->'), '')
+                .substring(1))
+            .toList();
+
+        urls = html
+            .querySelectorAll('a.s-item__link')
+            .map((element) => '${element.attributes['href']}')
+            .toList();
+
+        urlImages = html
+            .querySelectorAll('img')
+            .map((element) {
+              if ('${element.attributes['src']}'.startsWith('h')) {
+                return '${element.attributes['src']}';
+              }
+            })
+            .where((value) => value != null)
+            .map((value) => value!)
+            .toList();
       case 'walmart':
         titles = html
             .querySelectorAll('div > div > a > span')
