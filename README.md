@@ -21,9 +21,9 @@
 
 
 <p align="center">
-    <a href="https://github.com/anshulp2912/cheapBuy/issues/new/choose">Report Bug</a>
+    <a href="https://github.com/abhi934/CSC510_Project2_slash-phase3/issues/new/choose">Report Bug</a>
     ·
-    <a href="https://github.com/anshulp2912/cheapBuy/issues/new/choose">Request Feature</a>
+    <a href="https://github.com/abhi934/CSC510_Project2_slash-phase3/issues/new/choose">Request Feature</a>
 </p>
 
 
