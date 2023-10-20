@@ -92,6 +92,13 @@ python main.py
 ```
 streamlit run slash_user_interface.py
 ```
+Steps to install Chrome Extension:
+
+1. Go to Extensions -> Enable Developer mode
+2. Click on Load Unpacked
+3. Select the pyscript-local-runtime folder from the repo
+   
+
 
 :computer: Technology Used
 ---
