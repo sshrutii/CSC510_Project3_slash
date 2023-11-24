@@ -1,24 +1,64 @@
 body {
   width: 25rem;
   margin: 0 auto;
-  background-color: #f3f3f3;
-  padding: 1rem;
-  border: 1px solid #d1d1d1;
-  border-radius: 10px;
+  background-color: #3498db; /* Blue background */
+  padding: 1.5rem;
+  border: 1px solid #2980b9; /* Slightly darker blue border */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle box shadow for depth */
+  color: #2c3e50; /* Dark gray text */
 }
 
 .container {
   max-width: 600px;
-  padding: 15px;
+  padding: 2rem;
   margin: 0 auto;
+  background-color: #d5e5f2; /* Light blue-gray container background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger box shadow */
+}
+
+/* Customized dropdown styles */
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff; /* White background */
+  border: 1px solid #bdc3c7; /* Light gray border */
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Custom dropdown arrow */
+.form-select:after {
+  content: '\25BC'; /* Correct Unicode character for downward arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .btn {
   width: 100%;
+  padding: 1rem;
+  background-color: #2ecc71; /* Green button background */
+  color: #fff; /* White button text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.btn:hover {
+  background-color: #27ae60; /* Darker green on hover */
 }
 
 .form-label {
   font-weight: bold;
+  color: #2c3e50; /* Dark gray label text */
 }
 
 #results {
@@ -26,5 +66,18 @@ body {
 }
 
 .row {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  background-color: #ecf0f1; /* Light gray background */
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  color: #333; /* Dark text color */
+}
+
+.form-control:focus {
+  border-color: #3498db; /* Blue border color on focus */
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25); /* Light blue outline on focus */
 }
