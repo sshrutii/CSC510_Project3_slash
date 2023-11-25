@@ -19,8 +19,20 @@ import uuid
 
 conn = pymysql.connect(host="localhost", user="root", password="mysql@123", db="slash")
 
+
 def load_home_page(home):
     with home.container():
+        cursor = conn.cursor()
+        query = "SELECT * FROM user_history WHERE username=%s"
+        values = (session_state.username)
+        cursor.execute(query, values)
+        record = cursor.fetchall()
+        
+        with st.sidebar:
+            st.title("Search History")
+            if record:
+                st.write(record)
+
         # Hide Footer in Streamlit
         hide_menu_style = """
                 <style>
@@ -98,6 +110,14 @@ def load_home_page(home):
                     cheapest_indexes = [i for i, item in enumerate(items) if item['Price'] == cheapest_price]
                     second_cheapest_indexes = [i for i, item in enumerate(items) if item['Price'] == second_cheapest_price]
 
+                    cheapest_item_1 = ""
+                    cheapest_item_2 = ""
+                    for i, item in enumerate(items):
+                        if item['Price'] == cheapest_price:
+                            cheapest_item_1 = f'{item["Title"]} - {item["Price"]}: {item["Link"]}'
+                        elif item['Price'] == second_cheapest_price:
+                            cheapest_item_2 = f'{item["Title"]} - {item["Price"]}: {item["Link"]}'
+
                     # Highlight the rows with the cheapest and second cheapest items
                     def highlight_cheapest(index):
                         background_color = 'background-color: lightgreen' if index in cheapest_indexes or index in second_cheapest_indexes else ''
@@ -116,6 +136,23 @@ def load_home_page(home):
                         styled_table += row
                     styled_table += '</table>'
 
+                    if st.button("Save"):
+                        try:
+                            if record:
+                                st.write("here", record)
+                                query = "UPDATE user_history SET history=%s WHERE username=%s"
+                                values = (f'{record}, {cheapest_item_1, cheapest_item_2}', session_state.username)
+                                cursor.execute(query, values)
+                                conn.commit()
+                            else:
+                                st.write("Here2")
+                                query = "INSERT INTO user_history (username, history) VALUES (%s, %s)"
+                                values = (session_state.username,f'{cheapest_item_1, cheapest_item_2}')
+                                cursor.execute(query, values)
+                                conn.commit()
+                        except Exception as e:
+                            pass
+
                     # Display the HTML table using st.markdown
                     st.markdown(styled_table, unsafe_allow_html=True)
 
@@ -127,12 +164,12 @@ def load_home_page(home):
                     st.write("Website:", cheapest_item['Website'])
                     st.write("Link:", cheapest_item['Link'])
 
-
                 else:
                     st.error('No results found for the selected product and website.')
 
 def exit_home_page(home):
     home.empty()
+    
 
 def login(home):
     home.empty()
