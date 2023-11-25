@@ -9,6 +9,7 @@ This code is licensed under MIT license (see LICENSE.MD for details)
 import sys
 sys.path.append('../')
 import streamlit as st
+from streamlit import session_state
 from src.main_streamlit import search_items_API
 from src.url_shortener import shorten_url
 import pandas as pd
@@ -128,27 +129,38 @@ def load_home_page():
             else:
                 st.error('No results found for the selected product and website.')
 
+if 'login' not in session_state:
+ session_state.login = False
 
-login_holder = st.empty()
-with login_holder.container():
-    st.title("Welcome")
-    username = st.text_input("Username")
-    password = st.text_input("Password",type='password')
+if session_state.login:
+    st.success("Welcome {}".format(session_state.username))
+    load_home_page()
+
+else:
+    login_holder = st.empty()
+    with login_holder.container():
+        st.title("Welcome")
+        username = st.text_input("Username")
+        password = st.text_input("Password",type='password')
 
 
-    if st.button("Login"):
-        cursor = conn.cursor()
-        query = "SELECT * FROM users WHERE username=%s AND password=%s"
-        values = (username, password)
-        cursor.execute(query, values)
-        record = cursor.fetchone()
-        if record:
-            st.success("Logged in as {}".format(username))
-            login_holder.empty()
-            load_home_page()
-        else:
-            st.warning("Incorrect username or password")
+        if st.button("Login"):
+            cursor = conn.cursor()
+            query = "SELECT * FROM users WHERE username=%s AND password=%s"
+            values = (username, password)
+            cursor.execute(query, values)
+            record = cursor.fetchone()
+            if record:
+                session_state.login = True
+                session_state.username = username
+                st.success("Logged in as {}".format(username))
+                login_holder.empty()
+            else:
+                st.warning("Incorrect username or password")
 
+if session_state.login:
+    st.success("Welcome {}".format(session_state.username))
+    load_home_page()
 
 # Add footer to UI
 footer = """<style>
