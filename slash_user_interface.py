@@ -28,10 +28,6 @@ def load_home_page(home):
         cursor.execute(query, values)
         record = cursor.fetchall()
         
-        with st.sidebar:
-            st.title("Search History")
-            if record:
-                st.write(record)
 
         # Hide Footer in Streamlit
         hide_menu_style = """
@@ -163,6 +159,10 @@ def load_home_page(home):
                     st.write("Price:", cheapest_item['Price'])
                     st.write("Website:", cheapest_item['Website'])
                     st.write("Link:", cheapest_item['Link'])
+
+                    st.title("Search History")
+                    if record:
+                        st.write(record)
 
                 else:
                     st.error('No results found for the selected product and website.')
