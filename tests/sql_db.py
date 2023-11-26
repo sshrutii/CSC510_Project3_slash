@@ -38,7 +38,7 @@ class DBTests(unittest.TestCase):
         incorrectValues = ("p", "d")
         cursor.execute(query, incorrectValues)
         record = cursor.fetchone()
-        self.assertNotEqual(record, None)
+        self.assertEqual(record, None)
         query = "DELETE FROM users where (username=%s)"
         value = (username)
         x = cursor.execute(query, value)
