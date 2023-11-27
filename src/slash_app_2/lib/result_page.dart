@@ -108,7 +108,7 @@ class _ResultPageState extends State<ResultPage> {
         urls = html
             .querySelectorAll('a[href^="/ip/"]')
             .map((element) =>
-                'https://www.walmart.com/${element.attributes['href']}')
+                'https://www.walmart.com${element.attributes['href']}')
             .toList();
 
         urlImages = html
@@ -167,6 +167,7 @@ class _ResultPageState extends State<ResultPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Search Results'),
+        backgroundColor: Colors.blueGrey,
         centerTitle: true,
       ),
       body: ListView.builder(
@@ -193,7 +194,9 @@ class _ResultPageState extends State<ResultPage> {
           );
         },
       ),
+
     );
+    // backgroundColor: Colors.black,
   }
 
   String getSearchUrl(String selectedValue, String searchText) {
