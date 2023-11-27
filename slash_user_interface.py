@@ -19,7 +19,7 @@ import base64
 import csv
 from io import BytesIO
 import streamlit.components.v1 as components
-from streamlit.ReportThread import add_report_ctx
+from streamlit.report_thread import add_report_ctx
 #from link_button import link_button
 
 
@@ -121,6 +121,8 @@ def load_home_page(home):
                                     'Link': shorten_url(result['link'].split('\\')[-1])
                                 }
                             )
+
+                csv = convert_df(pd.DataFrame(items))
 
                 if len(items):
                     st.balloons()
@@ -242,25 +244,39 @@ def load_home_page(home):
                         """,
                         unsafe_allow_html=True
                     )
+
+                    st.download_button(
+                    label="Download data as CSV",
+                    data=csv,
+                    file_name='search_result.csv',
+                    mime='text/csv',
+                    )
+
                     st.title("Search history")
                     st.write(record)
 
-                    pdf_button = st.button("Download PDF")
+                    
+                    # pdf_button = st.button("Download PDF")
 
-                    if pdf_button:
-                        # Convert the HTML table to PDF
-                        pdf_data = html_to_pdf(styled_table)
+                    # if pdf_button:
+                    #     # Convert the HTML table to PDF
+                    #     pdf_data = html_to_pdf(styled_table)
                         
-                        # Create a download link for the PDF
-                        href = f'<a href="data:application/pdf;base64,{pdf_data}" download="search_results.pdf">Download PDF</a>'
+                    #     # Create a download link for the PDF
+                    #     href = f'<a href="data:application/pdf;base64,{pdf_data}" download="search_results.pdf">Download PDF</a>'
                         
-                        # Display the link (this can be done in a separate container or part of your layout)
-                        st.markdown(href, unsafe_allow_html=True)
+                    #     # Display the link (this can be done in a separate container or part of your layout)
+                    #     st.markdown(href, unsafe_allow_html=True)    
 
-def html_to_pdf(html_code):
-    pdf_code = f'<html>{html_code}</html>'
-    pdf_b64 = components.html_to_pdf(pdf_code)
-    return pdf_b64
+# def html_to_pdf(html_code):
+#     pdf_code = f'<html>{html_code}</html>'
+#     pdf_b64 = components.html_to_pdf(pdf_code)
+#     return pdf_b64
+
+@st.cache
+def convert_df(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode('utf-8')
 
 def exit_home_page(home):
     home.empty()
