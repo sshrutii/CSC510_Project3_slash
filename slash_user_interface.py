@@ -237,6 +237,7 @@ def load_home_page(home):
                         """,
                         unsafe_allow_html=True
                     )
+                    st.title("Search history")
                     st.write(record)
 
 def exit_home_page(home):
