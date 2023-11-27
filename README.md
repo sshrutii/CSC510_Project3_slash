@@ -34,30 +34,6 @@ Slash is a publicly accessible web API framework that allows one to scrape the m
 - **Fast**: With slash, you can save over 50% of your time by comparing deals across websites within seconds
 - **Easy**: Slash introduces easy to use public APIs to filter, sort and search through the search results
 - **Powerful**: Produces JSON responses that can be easily customised to bring about the desired output
-
----
-
-<p align="center">
-  <a href="#movie_camera-checkout-our-video">Checkout our video</a>
-  ::
-  <a href="#rocket-installation">Installation</a>
-  ::
-  <a href="#computer-technology-used">Technology Used</a>
-  ::
-  <a href="#bulb-use-case">Use Case</a>
-  ::
-  <a href="#page_facing_up-why">Why</a>
-  ::
-  <a href="#golf-future-roadmap">Future Roadmap</a>
-  ::
-  <a href="#sparkles-contributors">Contributors</a>
-  ::
-  <a href="#Acknowledgement">Acknowledgement</a>
-  ::
-  <a href="#email-support">Support</a>
-  
-</p>
-
 ---
 
 :movie_camera: Checkout our video
@@ -122,32 +98,37 @@ Steps to install Chrome Extension:
 - Slash in its current form is for students who wish to get the best deals out of every e-commerce site and can be used by anyone who is willing to develop an application that consumes these web APIs.
 - Future scope includes anything from a web application with a frontend or any Android or IOS application that utilises these Web APIs at their backend. Anyone can build their own custom application on top of these web APIs.
 
+:golf: New Features added
+---
+- Login session fixed
+- Improved User Interface
+- Added history of products searched
+- Mobile App fixed
+
 :golf: Future Roadmap
 ---
-- Improvement of User Interface
+- Add user sign up session
 - Product comparison based on prices and product features
 - Chat channel
-- Adding more company websites
-- History of products searched
 
 :sparkles: Contributors
 ---
-<table>
+<center>
+  <table>
   <tr>
-    <td align="center"><a href="https://github.com/abhi934"><img src="https://avatars.githubusercontent.com/u/72122805?v=4" width="75px;" alt=""/><br /><sub><b>Abhishek Desai</b></sub></a></td>
-    <td align="center"><a href="https://github.com/Chinzzii"><img src="https://avatars.githubusercontent.com/u/52067226?v=4" width="75px;" alt=""/><br /><sub><b>Chinmay Singhania</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Praful-Joshi"><img src="https://avatars.githubusercontent.com/u/72122805?v=4" width="75px;" alt=""/><br /><sub><b>Praful Joshi</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Rishi2812"><img src="https://avatars.githubusercontent.com/u/46415182?v=4" width="75px;" alt=""/><br /><sub><b>Rishi Dange</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/m-payal"><img src="https://avatars.githubusercontent.com/u/51577440?v=4" width="100px;" alt=""/><br /><sub><b>Payal Mehta</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Prathmesh2498"><img src="https://avatars.githubusercontent.com/u/46598699?v=4" width="100px;" alt=""/><br /><sub><b>Prathmesh Deshpande</b></sub></a></td>
+    <td align="center"><a href="https://github.com/sshrutii"><img src="https://avatars.githubusercontent.com/u/58786334?v=4" width="100px;" alt=""/><br /><sub><b>Shruti Yadav</b></sub></a></td>
+    <td align="center"><a href="https://github.com/sumedh-git"><img src="https://avatars.githubusercontent.com/u/58886133?v=4" width="100px;" alt=""/><br /><sub><b>Sumedh Limurkar</b></sub></a></td>
   </tr>
 </table>
+</center>
 
 ## 🙏 Acknowledgements <a name="Acknowledgement"></a>
 We would like to thank Professor Dr Timothy Menzies for helping us understand the process of building a good Software Engineering project. We would also like to thank the teaching assistants Xiao Ling, Andre Lustosa, Kewen Peng, Weichen Shi for their support throughout the project.
-We would also like to extend our gratitude to previous group : https://github.com/Urvashi74/slash
+
+We would also like to extend our gratitude to previous group : [https://github.com/abhi934/CSC510_Project2_slash-phase3](url)
 - [https://streamlit.io/](https://streamlit.io/)
 - [https://shields.io/](https://shields.io/)
 
-:email: Support
----
-For any queries and help, please reach out to us at: abhishek.triotech@gmail.com
 
