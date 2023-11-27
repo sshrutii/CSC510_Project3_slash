@@ -17,6 +17,17 @@ import pymysql
 import uuid
 #from link_button import link_button
 
+
+# Adding DataTables CDN links to the head section
+st.markdown(
+    """
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    """,
+    unsafe_allow_html=True
+)
+
 conn = pymysql.connect(host="localhost", user="root", password="mysql@123", db="slash")
 
 
@@ -75,18 +86,40 @@ def load_home_page(home):
 
                 for result in results:
                     if result != {} and result['price'] != '':
-                        items.append(
-                            {
-                                'Title': result['title'],
-                                'Price': float(''.join(result['price'].split('$')[-1].strip('$').rstrip('0').split(','))),
-                                'Website': result['website'],
-                                'Link': shorten_url(result['link'].split('\\')[-1])
-                            }
-                        )
+                        print(result['price'])
+
+                         # Clean up the price string
+                        price_string = ''.join(result['price'].split())
+                        price_string = ''.join(char for char in price_string if char.isdigit() or char == '.')
+
+                         # Ensure there is a decimal point before the last two digits
+                        if '.' not in price_string:
+                            price_string = f'{price_string[:-2]}.{price_string[-2:]}'
+
+                        # Check if the cleaned-up string is numeric
+                        if price_string.replace('.', '').isdigit():
+                            items.append(
+                                {
+                                    'Title': result['title'],
+                                    'Price': float(price_string),
+                                    'Website': result['website'],
+                                    'Link': shorten_url(result['link'].split('\\')[-1])
+                                }
+                            )
+                        else:
+                            # Handle the case where the cleaned-up string is not numeric
+                            items.append(
+                                {
+                                    'Title': result['title'],
+                                    'Price': None,  # or any default value you prefer
+                                    'Website': result['website'],
+                                    'Link': shorten_url(result['link'].split('\\')[-1])
+                                }
+                            )
 
                 if len(items):
                     st.balloons()
-                    st.markdown("<h2 style='text-align: center; color: #1DC5A9;'>Search Results</h2>", unsafe_allow_html=True)
+                    #st.markdown("<h2 style='text-align: center; color: #1DC5A9;'>Search Results</h2>", unsafe_allow_html=True)
 
                     cheapest_item = None
 
@@ -125,12 +158,20 @@ def load_home_page(home):
                         style = highlight_cheapest(i)
                         row = f'<tr style="{style}">'
                         row += f'<td>{item["Title"]}</td>'
-                        row += f'<td>{item["Price"]}</td>'
+
+                       # Extract numerical part of the price and clean up the string
+                        price_string = str(item['Price']).replace('$', '').replace(',', '')
+
+                        # Check if the cleaned-up string is numeric
+                        if price_string.replace('.', '').isdigit():
+                            row += f'<td>{float(price_string)}</td>'
+                        else:
+                            row += '<td>Not Available</td>'  # or any default value you prefer
+
                         row += f'<td>{item["Website"]}</td>'
                         row += f'<td><a href="{item["Link"]}">Link to the product</a></td>'
                         row += '</tr>'
                         styled_table += row
-                    styled_table += '</table>'
 
                     if st.button("Save"):
                         try:
@@ -149,23 +190,50 @@ def load_home_page(home):
                         except Exception as e:
                             pass
 
-                    # Display the HTML table using st.markdown
+                    # Display the HTML table using DataTables
+                    st.markdown("<h2 style='text-align: center; color: #1DC5A9;'>Search Results</h2>", unsafe_allow_html=True)
+
+                    # Create an HTML table with DataTables options
+                    styled_table = '<table id="results_table" class="display">'
+                    styled_table += '<thead><tr>'
+                    styled_table += '<th>Title</th>'
+                    styled_table += '<th>Price</th>'
+                    styled_table += '<th>Website</th>'
+                    styled_table += '<th>Link</th>'
+                    styled_table += '</tr></thead><tbody>'
+
+                    for i, item in enumerate(items):
+                        style = highlight_cheapest(i)
+                        row = f'<tr style="{style}">'
+                        row += f'<td>{item["Title"]}</td>'
+                        row += f'<td>{item["Price"]}</td>'
+                        row += f'<td>{item["Website"]}</td>'
+                        row += f'<td><a href="{item["Link"]}">Link to the product</a></td>'
+                        row += '</tr>'
+                        styled_table += row
+
+                    styled_table += '</tbody></table>'
+
+                    # Display the DataTable
                     st.markdown(styled_table, unsafe_allow_html=True)
 
-
-
-                    st.markdown("<h2 style='text-align: center; color: #1DC5A9;'>Cheapest Item</h2>", unsafe_allow_html=True)
-                    st.write("Title:", cheapest_item['Title'])
-                    st.write("Price:", cheapest_item['Price'])
-                    st.write("Website:", cheapest_item['Website'])
-                    st.write("Link:", cheapest_item['Link'])
-
-                    st.title("Search History")
-                    if record:
-                        st.write(record)
-
-                else:
-                    st.error('No results found for the selected product and website.')
+                    # DataTables initialization script
+                    st.markdown(
+                        """
+                        <script>
+                        $(document).ready(function() {
+                            $('#results_table').DataTable({
+                                "order": [[1, "asc"]],  // Sort by the second column (Price) in ascending order by default
+                                "searching": true,      // Enable searching
+                                "paging": true,         // Enable pagination
+                                "lengthMenu": [10, 25, 50, 100],  // Display entries per page options
+                                "pageLength": 10         // Default number of entries per page
+                            });
+                        });
+                        </script>
+                        """,
+                        unsafe_allow_html=True
+                    )
 
 def exit_home_page(home):
     home.empty()
@@ -254,4 +322,3 @@ text-align: center;
 </div>
 """
 st.markdown(footer, unsafe_allow_html=True)
-
