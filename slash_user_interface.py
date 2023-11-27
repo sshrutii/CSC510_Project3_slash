@@ -237,6 +237,7 @@ def load_home_page(home):
                         """,
                         unsafe_allow_html=True
                     )
+                    st.write(record)
 
 def exit_home_page(home):
     home.empty()
