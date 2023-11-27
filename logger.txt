@@ -23,3 +23,16 @@ amazon query:Apple
 amazon query:Apple
 amazon query:laptop
 amazon query:Laptop
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
+amazon query:vaccum cleaner
