@@ -154,8 +154,11 @@ def load_home_page(home):
 
                     # Create an HTML table with custom styling
                     styled_table = '<table>'
-                    for i, item in enumerate(items):
-                        style = highlight_cheapest(i)
+                    sortedItems = sorted(items, key=lambda x: x['Price'])
+                    count = 0
+
+                    for i, item in enumerate(sortedItems):
+                        style = 'background-color: lightgreen' if count < 2 else ''
                         row = f'<tr style="{style}">'
                         row += f'<td>{item["Title"]}</td>'
 
@@ -172,17 +175,15 @@ def load_home_page(home):
                         row += f'<td><a href="{item["Link"]}">Link to the product</a></td>'
                         row += '</tr>'
                         styled_table += row
-
+                        count += 1
                     if st.button("Save"):
                         try:
                             if record:
-                                st.write("here", record)
                                 query = "UPDATE user_history SET history=%s WHERE username=%s"
                                 values = (f'{record}, {cheapest_item_1, cheapest_item_2}', session_state.username)
                                 cursor.execute(query, values)
                                 conn.commit()
                             else:
-                                st.write("Here2")
                                 query = "INSERT INTO user_history (username, history) VALUES (%s, %s)"
                                 values = (session_state.username,f'{cheapest_item_1, cheapest_item_2}')
                                 cursor.execute(query, values)
@@ -202,8 +203,9 @@ def load_home_page(home):
                     styled_table += '<th>Link</th>'
                     styled_table += '</tr></thead><tbody>'
 
-                    for i, item in enumerate(items):
-                        style = highlight_cheapest(i)
+                    count = 0
+                    for i, item in enumerate(sortedItems):
+                        style = 'background-color: lightgreen' if count < 2 else ''
                         row = f'<tr style="{style}">'
                         row += f'<td>{item["Title"]}</td>'
                         row += f'<td>{item["Price"]}</td>'
@@ -211,6 +213,7 @@ def load_home_page(home):
                         row += f'<td><a href="{item["Link"]}">Link to the product</a></td>'
                         row += '</tr>'
                         styled_table += row
+                        count += 1
 
                     styled_table += '</tbody></table>'
 
@@ -234,6 +237,7 @@ def load_home_page(home):
                         """,
                         unsafe_allow_html=True
                     )
+                    st.write(record)
 
 def exit_home_page(home):
     home.empty()
