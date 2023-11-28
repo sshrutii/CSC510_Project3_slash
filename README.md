@@ -74,13 +74,32 @@ Steps to install Chrome Extension:
 2. Click on Load Unpacked
 3. Select the pyscript-local-runtime folder from the repo
    
+:Flutter
+---
+A new Flutter project.
 
+Getting Started
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+Lab: Write your first Flutter app
+Cookbook: Useful Flutter samples
+For help getting started with Flutter development, view the online documentation, which offers tutorials, samples, guidance on mobile development, and a full API reference.
+
+### Requirements
+
+- Flutter SDK installed
+- Dart SDK
+- Android Studio/IntelliJ/Visual Studio
 
 :computer: Technology Used
 ---
 - Streamlit [https://streamlit.io/]
 - Android Studio
 - Python
+- Flutter
+- Dart
 
 
 :bulb: Use Case
@@ -100,16 +119,22 @@ Steps to install Chrome Extension:
 
 :golf: New Features added
 ---
-- Login session fixed
-- Improved User Interface
+- Login session Added
+- Improved User Interface of Extention
 - Added history of products searched
-- Mobile App fixed
+- Mobile App fixed in Flutter
+- Flutter UI improvised significantly
+- Fixed website search
+- Download the complete list of searched products in a CSV format
+- Compare prices and deals to find the best offer.
+- Easy-to-use interface for quick navigation and search in Flutter
+- Redirect to the respective app/website in Flutter
+- Chat channel added
 
 :golf: Future Roadmap
 ---
-- Add user sign up session
-- Product comparison based on prices and product features
-- Chat channel
+- Add user sign-up session
+- Product comparison based on prices and product features and display in Graph
 
 :sparkles: Contributors
 ---
