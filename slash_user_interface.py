@@ -186,12 +186,12 @@ def load_home_page(home):
                     try:
                         if record:
                             query = "UPDATE user_history SET history=%s WHERE username=%s"
-                            values = (f'{record}, {cheapest_item_1}, {cheapest_item_2}', f'{session_state.username}')
+                            values = (f'{record}////-////{cheapest_item_1}////-////{cheapest_item_2}', f'{session_state.username}')
                             cursor.execute(query, values)
                             conn.commit()
                         else:
                             query = "INSERT INTO user_history (username, history) VALUES (%s, %s)"
-                            values = (f'{session_state.username}', f'{cheapest_item_1}, {cheapest_item_2}')
+                            values = (f'{session_state.username}', f'{cheapest_item_1}////-////{cheapest_item_2}')
                             cursor.execute(query, values)
                             conn.commit()
                     except Exception as e:
@@ -266,7 +266,7 @@ def load_home_page(home):
 
         st.title("Search history")
         if record:
-            recs = record.split(",")
+            recs = record.split("////-////")
             styled_table = '<table id="results_table" class="display">'
             styled_table += '<thead><tr>'
             styled_table += '<th>Title</th>'
