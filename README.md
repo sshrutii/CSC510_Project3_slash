@@ -81,6 +81,8 @@ Steps to install Chrome Extension:
 - Streamlit [https://streamlit.io/]
 - Android Studio
 - Python
+- Flutter
+- Dart
 
 
 :bulb: Use Case
@@ -100,14 +102,16 @@ Steps to install Chrome Extension:
 
 :golf: New Features added
 ---
-- Login session fixed
-- Improved User Interface
+- Login session Added
+- Improved User Interface of Extention
 - Added history of products searched
-- Mobile App fixed
+- Mobile App fixed in Flutter
+- Flutter UI improvised significantly
+- Fixed website search
 
 :golf: Future Roadmap
 ---
-- Add user sign up session
+- Add user sign-up session
 - Product comparison based on prices and product features
 - Chat channel
 
