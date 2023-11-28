@@ -19,7 +19,6 @@ import base64
 import csv
 from io import BytesIO
 import streamlit.components.v1 as components
-from streamlit.report_thread import add_report_ctx
 #from link_button import link_button
 
 
@@ -39,11 +38,12 @@ conn = pymysql.connect(host="localhost", user="root", password="mysql@123", db="
 def load_home_page(home):
     with home.container():
         cursor = conn.cursor()
-        query = "SELECT * FROM user_history WHERE username=%s"
+        query = "SELECT history FROM user_history WHERE username=%s"
         values = (session_state.username)
         cursor.execute(query, values)
-        record = cursor.fetchall()
-        
+        record = cursor.fetchone()
+        if record:
+            record = record[0]
 
         # Hide Footer in Streamlit
         hide_menu_style = """
@@ -150,9 +150,9 @@ def load_home_page(home):
                     cheapest_item_2 = ""
                     for i, item in enumerate(items):
                         if item['Price'] == cheapest_price:
-                            cheapest_item_1 = f'{item["Title"]} - {item["Price"]}: {item["Link"]}'
+                            cheapest_item_1 = f'{item["Title"]}//-//{item["Price"]}//-//{item["Link"]}'
                         elif item['Price'] == second_cheapest_price:
-                            cheapest_item_2 = f'{item["Title"]} - {item["Price"]}: {item["Link"]}'
+                            cheapest_item_2 = f'{item["Title"]}//-//{item["Price"]}//-//{item["Link"]}'
 
                     # Highlight the rows with the cheapest and second cheapest items
                     def highlight_cheapest(index):
@@ -183,20 +183,20 @@ def load_home_page(home):
                         row += '</tr>'
                         styled_table += row
                         count += 1
-                    if st.button("Save"):
-                        try:
-                            if record:
-                                query = "UPDATE user_history SET history=%s WHERE username=%s"
-                                values = (f'{record}, {cheapest_item_1, cheapest_item_2}', session_state.username)
-                                cursor.execute(query, values)
-                                conn.commit()
-                            else:
-                                query = "INSERT INTO user_history (username, history) VALUES (%s, %s)"
-                                values = (session_state.username,f'{cheapest_item_1, cheapest_item_2}')
-                                cursor.execute(query, values)
-                                conn.commit()
-                        except Exception as e:
-                            pass
+                    
+                    try:
+                        if record:
+                            query = "UPDATE user_history SET history=%s WHERE username=%s"
+                            values = (f'{record}, {cheapest_item_1}, {cheapest_item_2}', f'{session_state.username}')
+                            cursor.execute(query, values)
+                            conn.commit()
+                        else:
+                            query = "INSERT INTO user_history (username, history) VALUES (%s, %s)"
+                            values = (f'{session_state.username}', f'{cheapest_item_1}, {cheapest_item_2}')
+                            cursor.execute(query, values)
+                            conn.commit()
+                    except Exception as e:
+                        pass
 
                     # Display the HTML table using DataTables
                     st.markdown("<h2 style='text-align: center; color: #1DC5A9;'>Search Results</h2>", unsafe_allow_html=True)
@@ -252,9 +252,6 @@ def load_home_page(home):
                     mime='text/csv',
                     )
 
-                    st.title("Search history")
-                    st.write(record)
-
                     
                     # pdf_button = st.button("Download PDF")
 
@@ -268,6 +265,27 @@ def load_home_page(home):
                     #     # Display the link (this can be done in a separate container or part of your layout)
                     #     st.markdown(href, unsafe_allow_html=True)    
 
+        st.title("Search history")
+        if record:
+            recs = record.split(",")
+            styled_table = '<table id="results_table" class="display">'
+            styled_table += '<thead><tr>'
+            styled_table += '<th>Title</th>'
+            styled_table += '<th>Price</th>'
+            styled_table += '<th>Link</th>'
+            styled_table += '</tr></thead><tbody>'
+
+            for r in recs:
+                row = '<tr>'
+                for val in r.split('//-//'):
+                    row += f'<td>{val}</td>'
+                row += '</tr>'
+                styled_table += row      
+            styled_table += '</tbody></table>'
+            st.markdown(styled_table, unsafe_allow_html=True)
+        else:
+            st.write("No search history found")
+            
 # def html_to_pdf(html_code):
 #     pdf_code = f'<html>{html_code}</html>'
 #     pdf_b64 = components.html_to_pdf(pdf_code)
