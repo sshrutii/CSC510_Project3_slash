@@ -127,7 +127,7 @@ For help getting started with Flutter development, view the online documentation
 - Fixed website search
 - Download the complete list of searched products in a CSV format
 
-## Flutter Features
+# Flutter Features - 
 - Search for products across multiple e-commerce websites (Amazon, Walmart, Target, BestBuy, Costco, eBay).
 - Compare prices and deals to find the best offer.
 - Easy-to-use interface for quick navigation and search.
