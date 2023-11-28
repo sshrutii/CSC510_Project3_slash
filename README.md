@@ -74,7 +74,24 @@ Steps to install Chrome Extension:
 2. Click on Load Unpacked
 3. Select the pyscript-local-runtime folder from the repo
    
+:Flutter
+---
+A new Flutter project.
 
+Getting Started
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+Lab: Write your first Flutter app
+Cookbook: Useful Flutter samples
+For help getting started with Flutter development, view the online documentation, which offers tutorials, samples, guidance on mobile development, and a full API reference.
+
+### Requirements
+
+- Flutter SDK installed
+- Dart SDK
+- Android Studio/IntelliJ/Visual Studio
 
 :computer: Technology Used
 ---
@@ -108,6 +125,14 @@ Steps to install Chrome Extension:
 - Mobile App fixed in Flutter
 - Flutter UI improvised significantly
 - Fixed website search
+- Download the complete list of searched products in a CSV format
+
+## Flutter Features
+- Search for products across multiple e-commerce websites (Amazon, Walmart, Target, BestBuy, Costco, eBay).
+- Compare prices and deals to find the best offer.
+- Easy-to-use interface for quick navigation and search.
+- Redirect to the respective app/website
+
 
 :golf: Future Roadmap
 ---
