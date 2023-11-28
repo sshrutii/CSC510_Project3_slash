@@ -1,0 +1,3 @@
+#Run these queries to create the required tables
+CREATE TABLE users ( id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), password VARCHAR(255));
+CREATE TABLE user_history ( id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), history VARCHAR(5000));
