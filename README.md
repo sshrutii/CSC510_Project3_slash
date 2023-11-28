@@ -1,4 +1,4 @@
-<p align="center"><img width="500" src="./assets/slash.png"></p>
+<p align="center"><img width="500" src="https://github.com/sshrutii/CSC510_Project3_slash/assets/58786334/103e5011-4ff2-4a6e-b71b-e70448eeffca"></p>
 
 <a href="https://zenodo.org/doi/10.5281/zenodo.10023583"><img src="https://zenodo.org/badge/703666512.svg" alt="DOI"></a>
 [![codecov](https://codecov.io/gh/rohan22shah/slash-phase3/branch/main/graph/badge.svg?token=ZJ1AXQ5IFN)](https://codecov.io/gh/rohan22shah/slash-phase3)
