@@ -150,9 +150,9 @@ def load_home_page(home):
                     cheapest_item_2 = ""
                     for i, item in enumerate(items):
                         if item['Price'] == cheapest_price:
-                            cheapest_item_1 = f'{item["Title"]}-{item["Price"]}-{item["Link"]}'
+                            cheapest_item_1 = f'{item["Title"]}//-//{item["Price"]}//-//{item["Link"]}'
                         elif item['Price'] == second_cheapest_price:
-                            cheapest_item_2 = f'{item["Title"]}-{item["Price"]}-{item["Link"]}'
+                            cheapest_item_2 = f'{item["Title"]}//-//{item["Price"]}//-//{item["Link"]}'
 
                     # Highlight the rows with the cheapest and second cheapest items
                     def highlight_cheapest(index):
@@ -267,7 +267,6 @@ def load_home_page(home):
 
         st.title("Search history")
         if record:
-            st.write(record)
             recs = record.split(",")
             styled_table = '<table id="results_table" class="display">'
             styled_table += '<thead><tr>'
@@ -278,7 +277,7 @@ def load_home_page(home):
 
             for r in recs:
                 row = '<tr>'
-                for val in r.split('-'):
+                for val in r.split('//-//'):
                     row += f'<td>{val}</td>'
                 row += '</tr>'
                 styled_table += row      
