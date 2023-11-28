@@ -91,7 +91,6 @@ def load_home_page(home):
 
                 for result in results:
                     if result != {} and result['price'] != '':
-                        print(result['price'])
 
                          # Clean up the price string
                         price_string = ''.join(result['price'].split())
@@ -353,33 +352,60 @@ if session_state.logoutpressed:
     
 
 # Add footer to UI
-footer = """<style>
-a:link , a:visited{
-color: blue;
-background-color: transparent;
-text-decoration: underline;
+footer = """
+<style>
+a:link, a:visited {
+    color: blue;
+    background-color: transparent;
+    text-decoration: underline;
 }
 
 a:hover,  a:active {
-color: red;
-background-color: transparent;
-text-decoration: underline;
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
 }
 
 .footer {
-position: fixed;
-left: 0;
-bottom: 0%;
-width: 100%;
-background-color: #DFFFFA;
-color: black;
-text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0%;
+    width: 100%;
+    background-color: #DFFFFA;
+    color: black;
+    text-align: center;
+}
+
+.discord-link {
+    display: inline-block;
+    margin-top: 10px;
+}
+.discord-logo a {
+    text-decoration: none;  /* Remove underline from the text */
+}
+.discord-logo img {
+    height: 80px;
+    width: auto;
+}
+
+.discord-text {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
 }
 </style>
 <div class="footer">
-<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash" target="_blank">slash</a></p>
-<p><a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash/blob/main/LICENSE" target="_blank">MIT License Copyright (c) 2021 Rohan Shah</a></p>
-<p>Contributors: Anshul, Bhavya, Darshan, Pragna, Rohan</p>
+    <div class="discord-link">
+    <div class="discord-text">
+            Join our Discord channel for support
+        </div>
+        <div class="discord-logo">
+            <a href="https://discord.gg/bEUQypV3" target="_blank">
+                <img src="https://www.freeiconspng.com/uploads/discord-black-icon-1.png" alt="Discord Logo">
+            </a>
+        </div>
+    </div>
 </div>
 """
+
 st.markdown(footer, unsafe_allow_html=True)
