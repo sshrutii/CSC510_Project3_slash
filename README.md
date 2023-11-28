@@ -123,13 +123,32 @@ For help getting started with Flutter development, view the online documentation
 - Improved User Interface of Extention
 - Added history of products searched
 - Mobile App fixed in Flutter
-- Flutter UI improvised significantly
 - Fixed website search
 - Download the complete list of searched products in a CSV format
 - Compare prices and deals to find the best offer.
 - Easy-to-use interface for quick navigation and search in Flutter
 - Redirect to the respective app/website in Flutter
 - Chat channel added
+- Flutter UI and extension improvised significantly 
+
+## Flutter UI :
+From-
+<img src="https://github.com/sshrutii/CSC510_Project3_slash/assets/58786334/58a34e3e-46ed-47ef-999b-5822ef3d607a" alt="App Screenshots" width="300" height="600">
+To -
+<img src="https://github.com/sshrutii/CSC510_Project3_slash/assets/58786334/abd2b0ee-1cba-4f64-9a13-8b6feb0766f4" alt="App Screenshots" width="300" height="600">
+
+
+## Extention UI : 
+From-
+<img src="https://github.com/sshrutii/CSC510_Project3_slash/assets/58786334/43fd7965-7e94-4cdf-a171-61c8edde57bc" alt="App Screenshots" width="400" height="300">
+To-
+<img src="https://github.com/sshrutii/CSC510_Project3_slash/assets/58786334/d8604b33-2c24-47d8-b367-c3d76f507048" alt="App Screenshots" width="400" height="300">
+
+
+## Web App UI : 
+<img src="https://github.com/sshrutii/CSC510_Project3_slash/assets/58786334/356fae10-d7d0-49ea-8872-46d232da3a9c" alt="App Screenshots" width="900" height="600">
+<img src="https://github.com/sshrutii/CSC510_Project3_slash/assets/58786334/16925ddc-d133-4c89-b5e9-8b4041e1b22a" alt="App Screenshots" width="900" height="600">
+
 
 :golf: Future Roadmap
 ---
